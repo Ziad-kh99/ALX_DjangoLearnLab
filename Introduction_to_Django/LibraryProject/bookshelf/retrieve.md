@@ -1,3 +1,5 @@
+book = Book.objects.get(pk=1)
+
 book = Book.objects.filter(title='1984').first()
 book.title
 # '1984'
