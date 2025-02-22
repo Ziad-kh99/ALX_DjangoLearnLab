@@ -24,9 +24,9 @@ if library:
 
 
 #> Retrieve the librarian for a library:
-library_name = input('Enter Library Name: ')
-library_name = Library.objects.get(name=library_name)
+# library_name = input('Enter Library Name: ')
+# library_name = Library.objects.get(name=library_name)
 
-if library:
-    librarian = Librarian.objects.filter(library=library_name)
+# if library:
+librarian = Librarian.objects.get(library='')
 
