@@ -14,7 +14,8 @@ else:
 
 
 #> List all books in a library:
-library = Library.objects.filter(name = 'Lib Name').first()
+library_name = input('Enter Library Name: ')
+library = Library.objects.filter(name = library_name).first()
 
 if library:
     books = library.books.all()
@@ -22,8 +23,8 @@ if library:
 
 
 #> Retrieve the librarian for a library:
-library = Library.objects.filter(name = 'Lib Name').first()
+library_name = Library.objects.filter(name = 'Lib Name').first()
 
 if library:
-    librarian = Librarian.objects.filter(library = library)
+    librarian = Librarian.objects.filter(library = library_name)
 
