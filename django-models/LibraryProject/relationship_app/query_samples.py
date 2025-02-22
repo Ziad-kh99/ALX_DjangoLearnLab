@@ -15,7 +15,7 @@ else:
 
 #> List all books in a library:
 library_name = input('Enter Library Name: ')
-library = Library.objects.get(name = library_name)
+library = Library.objects.get(name=library_name)
 
 if library:
     books = library.books.all()
