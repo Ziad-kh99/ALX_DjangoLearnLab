@@ -3,10 +3,11 @@ from .models import Book, Author, Library, Librarian
 
 
 #> Query all books by a specific author:
-author = Author.objects.filter(name = 'Ziad Khaled').first()
+author_name = input('Enter author name: ')
+author = Author.objects.get(name=author_name)
 
 if author:
-    books = Book.objects.filter(author = author)
+    books = Book.objects.filter(author=author)
 else:
     print('No author found with that name.')
 
@@ -23,8 +24,9 @@ if library:
 
 
 #> Retrieve the librarian for a library:
-library_name = Library.objects.filter(name = 'Lib Name').first()
+library_name = input('Enter Library Name: ')
+library_name = Library.objects.get(name=library_name)
 
 if library:
-    librarian = Librarian.objects.filter(library = library_name)
+    librarian = Librarian.objects.filter(library=library_name)
 
