@@ -7,6 +7,7 @@ from .models import Book
 from .models import Library
 from django.contrib.auth import login
 from django.contrib.auth.decorators import permission_required
+from django.http import HttpResponse
 
 
 def list_books(request):
@@ -14,6 +15,18 @@ def list_books(request):
 
     return render(request, 'relationship_app/list_books.html', books)
 
+@permission_required('relationship_app.can_add_book')
+def add_book(request):
+    HttpResponse('You can add book.')
+
+@permission_required('relationship_app.can_change_book')
+def change_book(request):
+    HttpResponse('You can change book.')
+
+@permission_required('relationship_app.can_delete_book')
+def delete_book(request):
+    HttpResponse('You can delete book.')
+    
 class LibraryDetailView(DetailView):
     model = Library
     template_name = 'relationship_app/library_detail.html'
