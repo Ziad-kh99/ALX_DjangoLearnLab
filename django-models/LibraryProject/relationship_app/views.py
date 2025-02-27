@@ -5,6 +5,7 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from .models import Book
 from .models import Library
+from django.contrib.auth import login
 
 
 def list_books(request):
