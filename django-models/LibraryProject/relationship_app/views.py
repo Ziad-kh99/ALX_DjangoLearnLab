@@ -30,3 +30,4 @@ class SignUpView(CreateView):
 
 class register:
     pass
+
