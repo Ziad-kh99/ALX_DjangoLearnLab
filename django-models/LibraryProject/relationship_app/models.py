@@ -26,7 +26,7 @@ class Librarian(models.Model):
         return self.name
 
 
-class UserProfile(User):
+class UserProfile(models.Model):
     ROLES = [
         ('admin', 'Admin'),
         ('author', 'Author'),
