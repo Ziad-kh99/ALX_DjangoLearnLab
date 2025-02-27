@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import list_books
+from .views import list_books, add_book, change_book, delete_book
 from .views import LibraryDetailView, SignUpView
 # views.register
 from .admin_view import admin
@@ -15,5 +15,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='relationship_app/logout.html'), name='logout'),
     path('admin/', admin, name='admin-view'),
     path('librarian/', librarian, name='librarian-view'),
-    path('member/', member, name='member-view')
+    path('member/', member, name='member-view'),
+    path('add_book/', add_book, name='add-book'),
+    path('edit_book/', change_book, name='edit-book'),
+    path('delete_book', delete_book, name='delete-book'),
 ]
