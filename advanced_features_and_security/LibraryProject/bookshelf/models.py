@@ -22,3 +22,21 @@ class CustomUserManager(BaseUserManager):
         extra_fileds.setdefault('is_active', True)
 
         return self.create_user(username, password, date_of_birth, profile_photo)
+
+
+class Author(models.Model):
+    name = models.CharField(150)
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=250)
+    pages_no = models.IntegerField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+   
+    class Meta():
+        permissions = [
+            ('can_view', 'Can view a book'),
+            ('can_create', 'Can create a book'),
+            ('can_edit', 'Can edit a book'),
+            ('can_delete', 'Can delete a book')
+        ]
