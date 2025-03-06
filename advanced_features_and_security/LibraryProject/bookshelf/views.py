@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import permission_required
 from .models import Book
-from django import forms
+from .forms import BookForm
 
 @permission_required('bookshelf.can_view')
 def book_list(request):
@@ -14,10 +14,6 @@ def book_list(request):
 def create_book(request):
     return HttpResponse('You can create book')
 
-class BookForm(forms.ModelForm):
-    class Meta:
-        model = Book
-        fields = ['title', 'description']
 
 def add_book(request):
     if request.method == 'POST':
