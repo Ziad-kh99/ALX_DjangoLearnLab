@@ -138,3 +138,19 @@ CSP_DEFAULT_SRC = ("'self'",)  # Allow resources from the same origin
 CSP_SCRIPT_SRC = ("'self'",)   # Allow scripts from the same origin
 CSP_STYLE_SRC = ("'self'",)    # Allow styles from the same origin
 CSP_IMG_SRC = ("'self'",)      # Allow images from the same origin
+
+# Config for HTTPS Connection:
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+
+# Secure Cookies over HTTPS:
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Secure Headers:
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
