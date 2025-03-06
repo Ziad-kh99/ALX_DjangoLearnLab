@@ -1,12 +1,30 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import permission_required
+from .models import Book
+from django import forms
 
 @permission_required('bookshelf.can_view')
 def book_list(request):
-    return HttpResponse('List all books')
+    query = request.GET.get('q')
+    results = Book.objects.all()
+    return render(request, 'bookshelf.book_list.html')
 
 @permission_required('bookshelf.can_create', raise_exception=True)
 def create_book(request):
     return HttpResponse('You can create book')
 
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ['title', 'description']
+
+def add_book(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('book_list')
+    else:
+        form = BookForm()
+    return render(request, 'add_book.html', {'form': form})
