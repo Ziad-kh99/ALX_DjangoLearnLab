@@ -131,3 +131,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',     # Enable token auth.
     ],
 }
+
+rest_framework.permissions.IsAuthenticated
