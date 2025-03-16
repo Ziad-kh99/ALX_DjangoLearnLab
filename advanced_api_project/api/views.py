@@ -4,19 +4,19 @@ from .models import Book
 from .serializers import BookSerializer
 
 
-class ListView(generics.ListAPIView):
+class ListView (generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-class DetialView(generics.RetrieveAPIView):
+class DetialView (generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-class CreateView(generics.CreateAPIView):
+class CreateView (generics.CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-class UpdateView(generics.UpdateAPIView):
+class UpdateView (generics.UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
