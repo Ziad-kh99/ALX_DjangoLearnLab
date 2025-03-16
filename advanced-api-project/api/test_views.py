@@ -18,4 +18,5 @@ class BookAPITestCase(TestCase):
         self.assertEqual(len(response.data), 1)
         self.assertEqual(response.data[0]['title'], '1958')
 
+# self.client.login
         
