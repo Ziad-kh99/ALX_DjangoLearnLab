@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from .filters import BookFilter
 from rest_framework import filters
+from django_filters import rest_framework
 
 class BookList(ListView):
     model = Book
