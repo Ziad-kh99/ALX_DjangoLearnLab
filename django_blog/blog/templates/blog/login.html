@@ -5,6 +5,7 @@
 
 <div>
     <form method="post">
+        {% csrf_token %}
         <fieldset>
             <legend>Log In</legend>
             {{ form }}
