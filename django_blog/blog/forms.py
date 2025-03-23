@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
+from .models import Profile, Post
 
 
 class UserRegisterForm(UserCreationForm):
@@ -14,7 +14,6 @@ class UserRegisterForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
-
     class Meta:
         model = User
         fields = ['username', 'email']
@@ -25,3 +24,23 @@ class ProfileUpdateform(forms.ModelForm):
         fields = ['image']
 
 
+
+class PostCreateForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)      # pop request from kwargs.
+        super().__init__(*args, **kwargs)
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
+    
+    def save(self, commit=True):
+        post = super().save(commit=False)   # Create the object, but don't save yet.
+        post.author = self.request.user     # Assign the logged-in user.
+        if commit:
+            post.save()                     # Now, save the object.
+        return post 
+
+class PostUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
